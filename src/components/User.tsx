@@ -2,6 +2,15 @@ import { IconBrandGithub, IconBrandInstagram, IconBrandLeetcode, IconBrandLinked
 
 const ProjectInfo = [
   {
+    title: "HomeRent App",
+    desc: "A full-stack home rental platform built with the MERN stack, featuring JWT authentication with Bcrypt for secure user access. Users can sign up, log in, create, edit, and delete property listings with detailed information. The app allows image uploads, deletion, and drag & drop functionality, storing photos in MongoDB. It includes a booking system with a calendar, property feed filtering by category, and keyword search. Users can also add and remove wishlist items. Built with Redux for state management and styled using Material UI and Sass (SCSS) for a modern, responsive UI.",
+    image: "Homepagerent.png",
+    live: "Deployed",
+    technologies: ["React", "Redux", "MUI", "Express.js", "Node.js", "MongoDB", "JWT"],
+    link: "https://homyrentalclient3.onrender.com/",
+    github: "https://github.com/Akash-Kumar56/HomyRental"
+},
+  {
     title: "E-comm App",
     desc: "Developed a full-featured e-commerce platform with a seamless user experience from product browsing to checkout. Integrated core functionalities like product search, filtering, and sorting to enhance user navigation. Implemented secure user authentication and role-based access to manage customer and admin accounts. Leveraged Redux for efficient state management, ensuring smooth and responsive interactions throughout the site. Incorporated Razorpay to handle secure online payments, enhancing trust and convenience for users.",
     image: "Ekart.png",

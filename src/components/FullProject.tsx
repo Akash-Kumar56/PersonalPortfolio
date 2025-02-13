@@ -1,5 +1,6 @@
 import { Badge, Button, Group, Modal,Text } from "@mantine/core";
 import { Image } from "@mantine/core";
+import { link } from "fs";
 
 const FullProject = (props: any) => {
   
@@ -23,10 +24,10 @@ const FullProject = (props: any) => {
       {props.desc}
     </Text>
     <Group justify="space-around" mt="md" mb="xs">
-    <a className="w-[40%]"><Button  color="blue" fullWidth mt="md" radius="md" >
+    <a href={props.github} target="_blank" className="w-[40%]"><Button  color="blue" fullWidth mt="md" radius="md" >
       View Code
     </Button></a>
-    <a className="w-[40%]"><Button  color="blue" fullWidth variant="outline" mt="md" radius="md">
+    <a href={props.link} target="_blank" className="w-[40%]"><Button  color="blue" fullWidth variant="outline" mt="md" radius="md">
       View Live App
     </Button></a>
     </Group>

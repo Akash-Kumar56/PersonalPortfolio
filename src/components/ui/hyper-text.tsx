@@ -39,32 +39,25 @@ export default function HyperText({
   };
 
   useEffect(() => {
-    const interval = setInterval(
-      () => {
-        if (!animateOnLoad && isFirstRender.current) {
-          clearInterval(interval);
-          isFirstRender.current = false;
-          return;
-        }
-        if (interations.current < text.length) {
-          setDisplayText((t) =>
-            t.map((l, i) =>
-              l === " "
-                ? l
-                : i <= interations.current
-                  ? text[i]
-                  : alphabets[getRandomInt(26)],
-            ),
-          );
-          interations.current = interations.current + 0.6;
-        } else {
-          setTrigger(false);
-          clearInterval(interval);
-        }
-      },
-      duration / (text.length),
-    );
-    // Clean up interval on unmount
+    const interval = setInterval(() => {
+      if (!animateOnLoad && isFirstRender.current) {
+        clearInterval(interval);
+        isFirstRender.current = false;
+        return;
+      }
+      if (interations.current < text.length) {
+        setDisplayText((t) =>
+          t.map((l, i) =>
+            l === " " ? l : i <= interations.current ? text[i] : alphabets[getRandomInt(26)]
+          )
+        );
+        interations.current += 0.6;
+      } else {
+        setTrigger(false);
+        clearInterval(interval);
+      }
+    }, duration / text.length);
+
     return () => clearInterval(interval);
   }, [text, duration, trigger, animateOnLoad]);
 
@@ -73,17 +66,28 @@ export default function HyperText({
       className="overflow-hidden py-2 flex cursor-default scale-100 bs-mx:justify-center"
       onMouseEnter={triggerAnimation}
     >
-      <AnimatePresence mode="wait">
-        {displayText.map((letter, i) => (
-          <motion.h1
-            key={i}
-            className={cn("font-mono", letter === " " ? "w-3" : "", className)}
-            {...framerProps}
-          >
-            {letter.toUpperCase()}
-          </motion.h1>
-        ))}
+      <AnimatePresence>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={{
+            visible: { transition: { staggerChildren: 0.05 } }, // Smooth staggered animation
+          }}
+          className="flex"
+        >
+          {displayText.map((letter, i) => (
+            <motion.h1
+              key={i}
+              className={cn("font-mono", letter === " " ? "w-3" : "", className)}
+              variants={framerProps}
+            >
+              {letter.toUpperCase()}
+            </motion.h1>
+          ))}
+        </motion.div>
       </AnimatePresence>
     </div>
   );
 }
+
