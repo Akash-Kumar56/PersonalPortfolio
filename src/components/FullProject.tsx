@@ -1,6 +1,6 @@
 import { Badge, Button, Group, Modal,Text } from "@mantine/core";
 import { Image } from "@mantine/core";
-import { link } from "fs";
+
 
 const FullProject = (props: any) => {
   
